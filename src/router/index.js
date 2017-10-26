@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import err from '@/components/pages/err'
+import Ranks from '@/components/rank/rankHome'
 
 
 Vue.use(Router)
 let routedatas = [
-	// {
-	// 	path: '/ranks/',
-	// 	title:"帕布斯排行榜",
-	// 	name: 'Index',
-	// 	component: Index
-	// },
+	{
+		path: '/rank/:type',
+		title:"帕布斯排行榜",
+		name: 'Ranks',
+		component: Ranks
+	},
 	{
 		path: '/*',
 		title:"404 not found",

@@ -5,9 +5,7 @@
     </div>
     <div class="btn">
       <span @click="$router.back()">返回上个页面</span>
-      <div style="padding-top:.3rem">
-        <router-link :to="{ name: 'Index' }">返回首页</router-link>
-      </div>
+      
     </div>
   </div>
 </template>
