@@ -154,7 +154,7 @@ export default {
 .toast{ width: 2.04rem; height: 2.04rem; background-color: rgba(0,0,0,.7); position: absolute; top: 50%; left: 50%;transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%); text-align: center; border-radius: .1rem; color: #fff; overflow: hidden;}
 .toast .toastTxt{ position: absolute; top: 1.36rem; width:100%;}
 .toast .toastIcon{ position: absolute;left: 50%;top: 50%; transform: translate(-50%,-80%);-webkit-transform: translate(-50%,-80%);}
-.toast .toastIcon .loading{-webkit-animation:gloading 3s linear infinite;animation:gloading 3s linear infinite; width: .5rem; height: .5rem;}
+.toast .toastIcon .loading{-webkit-animation:gloading 1s steps(12,end) infinite;animation:gloading 1s steps(12,end) infinite; width: .5rem; height: .5rem;}
 .toast .toastIcon .success{ width:.84rem; height: .6rem;}
 .toast .toastIcon .warning{ width: .6rem; height: .6rem;}
 
