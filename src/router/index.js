@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import err from '@/components/pages/err'
-import Ranks from '@/components/rank/rankHome'
+import Ranks from '@/components/pages/rank/rankHome'
 
 
 Vue.use(Router)
