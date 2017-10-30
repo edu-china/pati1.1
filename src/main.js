@@ -14,7 +14,7 @@ window.alert = function(str){
 }
 
 const baseurl = 'http://localhost:8080/api/';
-// const baseurl = 'http://m.shenzhoujiajiao.net/';
+// const baseurl = 'http://api.pati.shenzhoujiajiao.net/';
 // const baseurl = 'http://m.edu-china.com/';
 const timeout = 5000;
 const transrequest = [function(data){

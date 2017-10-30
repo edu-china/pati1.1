@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import err from '@/components/pages/err'
 import Ranks from '@/components/pages/rank/rankHome'
 import Pkrec from '@/components/pages/mine/pkrec'
+import Invcode from '@/components/pages/mine/invcode'
+import Goodsdetail from '@/components/pages/mall/detail'
 
 Vue.use(Router)
 let routedatas = [
@@ -13,10 +15,22 @@ let routedatas = [
 		component: Ranks
 	},
 	{
+		path: '/mine/invcode/:uid',
+		title:"我的邀请码",
+		name: 'Invcode',
+		component: Invcode
+	},
+	{
 		path: '/mine/pkrec/:uid',
 		title:"我的战绩",
 		name: 'Pkrec',
 		component: Pkrec
+	},
+	{
+		path: '/mall/detail/:id',
+		title:"商品详情",
+		name: 'Goodsdetail',
+		component: Goodsdetail
 	},
 	{
 		path: '/*',
