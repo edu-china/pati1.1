@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import err from '@/components/pages/err'
 import Ranks from '@/components/pages/rank/rankHome'
-
+import Pkrec from '@/components/pages/mine/pkrec'
 
 Vue.use(Router)
 let routedatas = [
@@ -11,6 +11,12 @@ let routedatas = [
 		title:"帕布斯排行榜",
 		name: 'Ranks',
 		component: Ranks
+	},
+	{
+		path: '/mine/pkrec/:uid',
+		title:"我的战绩",
+		name: 'Pkrec',
+		component: Pkrec
 	},
 	{
 		path: '/*',
