@@ -1,46 +1,57 @@
 <template>
   <div>
-    <div class="goodsimg">
-      <img src="http://pubstatic.edu-china.com/upload/cardActivity/15089130822630.png" />
+    <div class="imgw">
+      <img :src="imgs[0]" />
     </div>
-    <div class="topic wbg">
-      <h1>儿童保温杯带吸管两用防摔水杯小学生水壶幼儿园男女宝宝可爱杯子</h1>
-      <div class="vice">
-        <span class="price px32">1203<small>币</small></span>
-        <span class="px18 sd">库存 2020　 已售2020</span>
+    <div class="imgw info">
+      <img :src="imgs[1]" />
+      <div class="codew">
+        <div class="tit px30">我的邀请码</div>
+        <div class="code">
+          <span>120220018</span>
+        </div>
+        <div class="desc">
+          填写邀请码，赠送5爬梯币！
+        </div>
       </div>
     </div>
-    <div class="cw wbg">
-      <div class="tit px26">商品详情</div>
-      <div class="content" v-html="html"></div>
+    <div class="imgw">
+      <img :src="imgs[2]" />
+    </div>
+    <div class="imgw">
+      <img :src="imgs[3]" />
+    </div>
+    <div class="imgw">
+      <img :src="imgs[4]" />
     </div>
   </div>
 </template>
 
 <script>
+import img1 from '../../../assets/images/inv/1.png'
+import img2 from '../../../assets/images/inv/2.png'
+import img3 from '../../../assets/images/inv/3.png'
+import img4 from '../../../assets/images/inv/4.png'
+import img5 from '../../../assets/images/inv/5.png'
 export default {
   data() {
     return {
-      html:'<div>豆腐干豆腐干豆腐干地方感到反感地方大股东梵蒂冈的地方</div><div>豆腐干豆腐干地方</div>'
+      html:'<div>豆腐干豆腐干豆腐干地方感到反感地方大股东梵蒂冈的地方</div><div>豆腐干豆腐干地方</div>',
+      imgs:[img1,img2,img3,img4,img5]
     }
   },
   props:{},
-  created() {},
+  created() {
+
+  },
   methods: {}
 }
 </script>
 
 <style scoped>
-.goodsimg img{ width: 100%;}
-.wbg{ background-color: #fff;}
-.topic{ padding:.26rem;}
-.topic h1{ font-weight: normal; font-size: .32rem; padding-bottom: .2rem}
-.vice{ line-height:1em}
-.vice .price{ color: #ff4242}
-.vice .sd{color:#9b9b9b; float: right;}
-.cw{ margin-top: .24rem; padding: 0 .25rem;}
-.cw .tit{ height: .6rem; line-height: .6rem; padding-left: .22rem; position: relative;}
-.cw .tit::before{ content:" "; position: absolute; height: .28rem; width: .06rem; background-color: #399ac8; top:50%; margin-top: -.14rem; left: 0; border-radius: .03rem;}
-.content{ padding-bottom: .2rem;}
-.content >>> img{ max-width: 100%;}
+.imgw img{width: 100%;}
+.info{ position: relative;}
+.info .codew{ position: absolute; width: 100%; height: 100%; left: 0; top: 0; text-align:center; overflow: hidden;}
+.code{padding-top:.2rem}
+.code span{ font-size: .52rem; color: #f65050; font-weight: bold;}
 </style>
