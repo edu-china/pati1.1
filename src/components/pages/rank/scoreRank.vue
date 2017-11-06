@@ -1,64 +1,40 @@
 <template>
   <div>
     <ul class="wealth">
-      <li class="fn_clear">
+      <li class="fn_clear" v-for="(list, index) in lists" :key="index">
         <div class="fl  fn_clear">
-          <div class="rank fl">1</div>
+          <div class="rank fl">{{index+1}}</div>
           <div class="name fl">
-            <div class="elp">九月九日忆山东兄弟九月九日忆山东兄弟九月九日忆山东兄弟九月九日忆山东兄弟</div>
-            <div class="elp book-name">菲儿公主菲儿公主菲儿公主菲儿公主菲儿公主</div>
+            <div class="elp">{{list.name}}</div>
+            <div class="elp book-name">{{list.nick}}</div>
 
           </div>
         </div>
-        <div class="fr elp">222344567币</div>
-
-      </li>
-
-      <li class="fn_clear">
-        <div class="fl  fn_clear">
-          <div class="rank fl">1</div>
-          <div class="name fl">
-            <div class="elp">九月九日忆山东兄弟九月九日忆山东兄弟九月九日忆山东兄弟九月九日忆山东兄弟</div>
-            <div class="elp book-name">菲儿公主菲儿公主菲儿公主菲儿公主菲儿公主</div>
-
-          </div>
-        </div>
-        <div class="fr elp">222344567币</div>
-
-      </li>
-
-      <li class="fn_clear">
-        <div class="fl  fn_clear">
-          <div class="rank fl">1</div>
-          <div class="name fl">
-            <div class="elp">九月九日忆山东兄弟九月九日忆山东兄弟九月九日忆山东兄弟九月九日忆山东兄弟</div>
-            <div class="elp book-name">菲儿公主菲儿公主菲儿公主菲儿公主菲儿公主</div>
-
-          </div>
-        </div>
-        <div class="fr elp">222344567币</div>
-
-      </li>
-      <li class="fn_clear">
-        <div class="fl  fn_clear">
-          <div class="rank fl">4</div>
-          <div class="name fl">
-            <div class="elp">九月九日忆山东</div>
-            <div class="elp book-name">菲儿公主菲儿</div>
-
-          </div>
-        </div>
-        <div class="fr elp">222344555555555555567币</div>
+        <div class="fr elp">{{list.score}}</div>
 
       </li>
 
     </ul>
+    <loadlist @ondataupdate="getdata" :apiurl="'/Weixin/Member/scoreRank/pageSize/20/p/@p'"></loadlist>
   </div>
 </template>
-<script>
-
+<script >
+import loadlist from '../../base/loadlist.vue'
 export default {
-  
+  components: { loadlist },
+  data() {
+    return {
+      lists: []
+
+    }
+  },
+  methods: {
+    getdata(datas) {
+      this.lists = this.lists.concat(datas.list);
+
+    }
+  }
+
 }
 </script>
 
