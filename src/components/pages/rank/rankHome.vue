@@ -24,17 +24,28 @@
         <wealthRank v-if="this.$route.params.type=='wealthRank'"></wealthRank>
         <scoreRank v-if="this.$route.params.type=='scoreRank'"></scoreRank>
         <victoryRank v-if="this.$route.params.type=='victoryRank'"></victoryRank>
+        <FooterLoad ></FooterLoad>
+        
+
 
     </div>
 </template>
 <script>
 import Vue from 'vue'
+import FooterLoad from '../../base/footer_load.vue'
 import wealthRank from '../rank/wealthRank.vue'
 import scoreRank from '../rank/scoreRank.vue'
 import victoryRank from '../rank/victoryRank.vue'
 
+
 export default {
-    components: { wealthRank, scoreRank, victoryRank }
+    components: { wealthRank, scoreRank, victoryRank,FooterLoad},
+    data(){
+        return{
+            loadtype:"pk"
+        }
+    }
+
 
 }
 </script>
@@ -51,6 +62,7 @@ export default {
     top:0;
     left: 0;
     right: 0;
+    z-index: 1;
 }
 .nav-bar div {
     color: #fff;

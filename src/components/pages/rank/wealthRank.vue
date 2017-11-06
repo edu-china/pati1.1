@@ -1,50 +1,39 @@
 <template>
   <div>
     <ul class="wealth">
-      <li class="fn_clear">
+      <li class="fn_clear" v-for="(list, index) in lists" :key="index">
         <div class="fl elp">
-          <span class="rank">1</span>
-          <span class="name ">菲儿公主</span>
+          <span class="rank">{{index+1}}</span>
+          <span class="name ">{{list.nick}}</span>
         </div>
-        <div class="fr elp">222344567币</div>
+        <div class="fr elp">{{list.ptb_amount}}币</div>
 
       </li>
 
-      <li class="fn_clear">
-        <div class="fl elp">
-          <span class="rank">2</span>
-          <span class="name">菲儿公主</span>
-        </div>
-        <div class="fr elp">222344567币</div>
-
-      </li>
-      <li class="fn_clear">
-        <div class="fl elp">
-          <span class="rank">3</span>
-          <span class="name">菲儿公主</span>
-        </div>
-        <div class="fr elp">222344567币</div>
-
-      </li>
-      <li class="fn_clear">
-        <div class="fl elp">
-          <span class="rank">4</span>
-          <span class="name">菲儿公主菲儿公主主菲儿公主</span>
-        </div>
-        <div class="fr elp">22234456722234455672223445667币</div>
-
-      </li>
-      <li class="fn_clear">
-        <div class="fl elp">
-          <span class="rank">5</span>
-          <span class="name">菲儿公主</span>
-        </div>
-        <div class="fr elp">222344567币</div>
-
-      </li>
     </ul>
+    <loadlist    @ondataupdate="getdata" :apiurl="'/Weixin/Member/ptbRank/pageSize/20/p/@p'"></loadlist>
   </div>
 </template>
+<script >
+import loadlist from '../../base/loadlist.vue'
+export default {
+  components:{loadlist},
+  data(){
+    return{
+      lists:[]
+
+    }
+  },
+  methods:{
+    getdata(datas){
+      this.lists = this.lists.concat(datas.list) ;
+      
+    }
+  }
+  
+}
+</script>
+
 <style scoped>
 .fl {
   float: left
