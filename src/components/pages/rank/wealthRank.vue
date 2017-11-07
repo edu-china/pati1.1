@@ -6,7 +6,7 @@
           <span class="rank">{{index+1}}</span>
           <span class="name ">{{list.nick}}</span>
         </div>
-        <div class="fr elp">{{list.ptb_amount}}币11</div>
+        <div class="fr elp">{{list.ptb_amount}}币</div>
 
       </li>
 
