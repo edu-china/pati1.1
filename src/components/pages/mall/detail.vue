@@ -1,18 +1,18 @@
 <template>
-  <div>
+  <div v-if="complate">
     <div class="goodsimg">
-      <img src="http://pubstatic.edu-china.com/upload/cardActivity/15089130822630.png" />
+      <img :src="item.image_url" />
     </div>
     <div class="topic wbg">
-      <h1>儿童保温杯带吸管两用防摔水杯小学生水壶幼儿园男女宝宝可爱杯子</h1>
+      <h1>{{item.name}}</h1>
       <div class="vice">
-        <span class="price px32">1203<small>币</small></span>
-        <span class="px18 sd">库存 2020　 已售2020</span>
+        <span class="price px32">{{item.price}}<small>币</small></span>
+        <span class="px18 sd">库存 {{item.inventory}}　 已售 {{item.trade_num}}</span>
       </div>
     </div>
     <div class="cw wbg">
       <div class="tit px26">商品详情</div>
-      <div class="content" v-html="html"></div>
+      <div class="content" v-html="item.detail"></div>
     </div>
   </div>
 </template>
@@ -21,11 +21,18 @@
 export default {
   data() {
     return {
-      html:'<div>豆腐干豆腐干豆腐干地方感到反感地方大股东梵蒂冈的地方</div><div>豆腐干豆腐干地方</div>'
+      item:{},
+      complate:false
     }
   },
   props:{},
-  created() {},
+  created() {
+    this.axios.get("/weixin/item/detail/id/"+this.$route.params.id).then(response=>{
+      this.item = response.data.itemInfo;
+      this.complate = true;
+      alert(this.complate)
+    });
+  },
   methods: {}
 }
 </script>
