@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div class="uhead bgw">
+    <div class="uhead bgw" v-if="complate">
       <div class="uhtop">
         <div class="ex hideTxt">
-          <img src="http://pubstatic.edu-china.com/upload/headportrait/7981981507342699.jpg"/>
-          <span class="clblue px28">爱玩水的孩子</span>
+          <img :src="user.avator"/>
+          <span class="clblue px28">{{user.nick}}</span>
         </div>
         <div class="wins px26">
-          最高 <big class="clred">5</big> 连胜
+          最高 <big class="clred">{{user.winstreak_max-0}}</big> 连胜
         </div>
       </div>
       <div class="pkdata">
-        <span><big class="clred">35</big> 胜</span>
-        <span><big class="clblue">20</big> 负</span>
-        <span><big class="clred">6.2</big><small class="clred">%</small> 胜率</span>
+        <span><big class="clred">{{user.win_num}}</big> 胜</span>
+        <span><big class="clblue">{{user.fail_num}}</big> 负</span>
+        <span><big class="clred">{{user.win_rate}}</big><small class="clred">%</small> 胜率</span>
       </div>
     </div>
     <div class="titbar">
@@ -21,45 +21,42 @@
     </div>
     <div class="bgw">
       <ul class="pklist">
-        <li>
-          <img src="http://pubstatic.edu-china.com/upload/headportrait/7981981507342699.jpg"/>
+        <li v-for="u in list">
+          <img :src="u.avator"/>
           <dl>
-            <dt class="hideTxt">菲菲</dt>
-            <dd class="hideTxt">2011-02-20</dd>
+            <dt class="hideTxt">{{u.nick}}</dt>
+            <dd class="hideTxt">{{u.create_time}}</dd>
           </dl>
-          <span class="pkres win">PK结果</span>
-        </li>
-        <li>
-          <img src="http://pubstatic.edu-china.com/upload/headportrait/7981981507342699.jpg"/>
-          <dl>
-            <dt class="hideTxt">菲菲</dt>
-            <dd>2011-02-20</dd>
-          </dl>
-          <span class="pkres win">PK结果</span>
-        </li>
-        <li>
-          <img src="http://pubstatic.edu-china.com/upload/headportrait/7981981507342699.jpg"/>
-          <dl>
-            <dt class="hideTxt">菲菲</dt>
-            <dd>2011-02-20</dd>
-          </dl>
-          <span class="pkres win">PK结果</span>
+          <span class="pkres" :class="u.is_win-0?'win':'fail'">PK结果</span>
         </li>
       </ul>
+      <loadlist @ondataupdate="getdata" :apiurl="'/Weixin/Member/getMyPkInfo/userId/'+this.$route.params.uid+'/p/@p'"></loadlist>
     </div>
   </div>
 
 </template>
 
 <script>
+import loadlist from '../../base/loadlist.vue'
 export default {
   data() {
     return {
+      list:[],
+      user:{},
+      complate:false
     }
   },
+  components:{loadlist},
   props:{},
-  created() {},
-  methods: {}
+  created() {
+  },
+  methods: {
+    getdata(datas){
+      this.list = datas.list;
+      this.user = datas.userInfo;
+      this.complate = true;
+    }
+  }
 }
 </script>
 

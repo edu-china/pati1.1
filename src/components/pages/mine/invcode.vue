@@ -8,7 +8,7 @@
       <div class="codew">
         <div class="tit px30">我的邀请码</div>
         <div class="code">
-          <span>120220018</span>
+          <span>{{myInviteCode}}</span>
         </div>
         <div class="desc">
           填写邀请码，赠送5爬梯币！
@@ -37,12 +37,16 @@ export default {
   data() {
     return {
       html:'<div>豆腐干豆腐干豆腐干地方感到反感地方大股东梵蒂冈的地方</div><div>豆腐干豆腐干地方</div>',
-      imgs:[img1,img2,img3,img4,img5]
+      imgs:[img1,img2,img3,img4,img5],
+      myInviteCode:'-------'
     }
   },
   props:{},
   created() {
-
+    this.$http.get('/Weixin/Member/inviteCode/userId/'+this.$route.params.uid).then(response=>{
+      //response.data;
+      this.myInviteCode = response.data.myInviteCode
+    });
   },
   methods: {}
 }
