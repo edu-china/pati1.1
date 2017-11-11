@@ -14,10 +14,12 @@
       <div class="tit px26">商品详情</div>
       <div class="content" v-html="item.detail"></div>
     </div>
+    <bottom loadtype="shop"></bottom>
   </div>
 </template>
 
 <script>
+import bottom from '../../base/footer_load.vue'
 export default {
   data() {
     return {
@@ -25,6 +27,7 @@ export default {
       complate:false
     }
   },
+  components:{bottom},
   props:{},
   created() {
     this.axios.get("/weixin/item/detail/id/"+this.$route.params.id).then(response=>{

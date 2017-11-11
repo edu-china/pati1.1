@@ -24,6 +24,7 @@
     <div class="imgw">
       <img :src="imgs[4]" />
     </div>
+    <bottom></bottom>
   </div>
 </template>
 
@@ -33,6 +34,7 @@ import img2 from '../../../assets/images/inv/2.png'
 import img3 from '../../../assets/images/inv/3.png'
 import img4 from '../../../assets/images/inv/4.png'
 import img5 from '../../../assets/images/inv/5.png'
+import bottom from '../../base/footer_load.vue'
 export default {
   data() {
     return {
@@ -41,6 +43,7 @@ export default {
       myInviteCode:'-------'
     }
   },
+  components:{bottom},
   props:{},
   created() {
     this.$http.get('/Weixin/Member/inviteCode/userId/'+this.$route.params.uid).then(response=>{

@@ -32,12 +32,14 @@
       </ul>
       <loadlist @ondataupdate="getdata" :apiurl="'/Weixin/Member/getMyPkInfo/userId/'+this.$route.params.uid+'/p/@p'"></loadlist>
     </div>
+    <bottom loadtype="pk"></bottom>
   </div>
 
 </template>
 
 <script>
 import loadlist from '../../base/loadlist.vue'
+import bottom from '../../base/footer_load.vue'
 export default {
   data() {
     return {
@@ -46,7 +48,7 @@ export default {
       complate:false
     }
   },
-  components:{loadlist},
+  components:{loadlist,bottom},
   props:{},
   created() {
   },
