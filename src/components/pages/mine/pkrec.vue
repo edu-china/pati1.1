@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     getdata(datas){
+      this.wxConfig(datas.shareInfo);
       this.list = datas.list;
       this.user = datas.userInfo;
       this.complate = true;

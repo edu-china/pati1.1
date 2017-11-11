@@ -45,7 +45,8 @@ export default {
   created() {
     this.$http.get('/Weixin/Member/inviteCode/userId/'+this.$route.params.uid).then(response=>{
       //response.data;
-      this.myInviteCode = response.data.myInviteCode
+      this.myInviteCode = response.data.myInviteCode;
+      this.wxConfig(response.data.shareInfo);
     });
   },
   methods: {}
