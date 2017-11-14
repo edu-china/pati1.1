@@ -13,9 +13,9 @@ window.alert = function(str){
   console.log(str);
 }
 
-const baseurl = 'http://localhost:8080/api/';
-// const baseurl = 'http://api.pati.shenzhoujiajiao.net/';
-// const baseurl = 'http://m.edu-china.com/';
+// const baseurl = 'http://localhost:8080/api/';
+const baseurl = 'http://pati.shenzhoujiajiao.net/';
+// const baseurl = 'http://pati.edu-china.com/';
 const timeout = 5000;
 const transrequest = [function(data){
   var isjson = typeof(data) == "object" && Object.prototype.toString.call(data).toLowerCase() == "[object object]" && !data.length;
