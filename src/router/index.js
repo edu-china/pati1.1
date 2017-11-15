@@ -10,7 +10,7 @@ Vue.use(Router)
 let routedatas = [
 	{
 		path: '/rank/:type',
-		title:"帕布斯排行榜",
+		title:"爬布斯排行榜",
 		name: 'Ranks',
 		component: Ranks
 	},
