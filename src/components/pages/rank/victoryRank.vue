@@ -9,7 +9,7 @@
         <div class="fr elp fn_clear">
           <span class="elp">{{list.win_num}}胜</span>
           <span class="elp">{{list.fail_num}}负</span>
-          <span class="elp">{{list.win_rate}}</span>
+          <span class="elp">{{list.win_rate}}%</span>
         </div>
 
       </li>
