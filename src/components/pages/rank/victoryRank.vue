@@ -6,10 +6,10 @@
           <span class="rank">{{index+1}}</span>
           <span class="name ">{{list.nick}}</span>
         </div>
-        <div class="fr elp fn_clear">
-          <span class="elp">{{list.win_num}}胜</span>
-          <span class="elp">{{list.fail_num}}负</span>
-          <span class="elp">{{list.win_rate}}%</span>
+        <div class="fr fn_clear">
+          <span>{{list.win_num}}胜</span>
+          <span>{{list.fail_num}}负</span>
+          <span>{{list.win_rate}}%</span>
         </div>
 
       </li>
