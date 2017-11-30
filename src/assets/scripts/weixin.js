@@ -23,7 +23,7 @@ let wxConfig = (shareinfo,wxready)=>{
   loadwxjs().then(wx=>{
     // console.log(wx);
     wx.config({
-      debug: true,
+      debug: false,
       appId:shareinfo.shareAppId,
       timestamp: shareinfo.shareTime,
       nonceStr: shareinfo.shareNonceStr,
