@@ -71,13 +71,9 @@ export default {
 
 .wealth li .fr span {
   float: left;
-  max-width: .8rem;
   margin-left: .2rem
 }
 
-.wealth li .fr span:last-child {
-  max-width: 1rem;
-}
 
 .wealth li .rank {
   display: inline-block;
