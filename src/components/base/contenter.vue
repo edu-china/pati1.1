@@ -36,7 +36,7 @@
 </script>
 
 <style scoped>
-.contentText{  position: relative;}
+.contentText{  position: relative; }
 .textwrap img{ max-width: 100%; width: 100px;}
 .cut{max-height: 8rem; overflow: hidden;}
 .slideopen{ position: absolute; background:-webkit-linear-gradient(rgba(255, 255, 255, .2),rgba(255, 255, 255, .8), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); height: .9rem; line-height: .9rem; text-align: center; bottom: 0; width: 100%; left:0; padding-top: .9rem;}
