@@ -16,7 +16,7 @@ window.alert = function(str){
 // const baseurl = 'http://localhost:8080/api/';
 // const baseurl = 'http://pati.shenzhoujiajiao.net/';
 const baseurl = 'http://pati.edu-china.com/';
-const timeout = 5000;
+const timeout = 10000;
 const transrequest = [function(data){
   var isjson = typeof(data) == "object" && Object.prototype.toString.call(data).toLowerCase() == "[object object]" && !data.length;
   if(isjson) return qs.stringify(data);

@@ -33,7 +33,6 @@ export default {
     this.axios.get("/weixin/item/detail/id/"+this.$route.params.id).then(response=>{
       this.item = response.data.itemInfo;
       this.complate = true;
-      this.wxConfig(response.data.shareInfo);
     });
   },
   methods: {}
