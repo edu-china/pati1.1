@@ -21,7 +21,7 @@
     </div>
     <div class="bgw">
       <ul class="pklist">
-        <li v-for="u in list">
+        <li v-for="(u,i) in list" :key="i">
           <ex :src="u.avator" class="img"/>
           <dl>
             <dt class="hideTxt">{{u.nick}}</dt>
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     getdata(datas){
-      this.list = datas.list;
+      this.list = this.list.concat(datas.list);
       if(datas.userInfo){
         this.user = datas.userInfo;
       }

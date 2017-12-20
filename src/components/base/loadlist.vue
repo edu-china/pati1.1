@@ -29,6 +29,7 @@ export default{
   },
   methods:{
     getActivityList(){
+      this.barText = "正在加载..."
       this.isloading = true;
       this.axios.get(this.apiurl.replace("@p",this.currPage)).then((response)=>{
 
