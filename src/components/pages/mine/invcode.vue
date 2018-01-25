@@ -11,7 +11,7 @@
           <span>{{myInviteCode}}</span>
         </div>
         <div class="desc">
-          填写邀请码，赠送5爬梯币！
+          填写邀请码，赠送1爬梯币！
         </div>
       </div>
     </div>
@@ -38,7 +38,6 @@ import bottom from '../../base/footer_load.vue'
 export default {
   data() {
     return {
-      html:'<div>豆腐干豆腐干豆腐干地方感到反感地方大股东梵蒂冈的地方</div><div>豆腐干豆腐干地方</div>',
       imgs:[img1,img2,img3,img4,img5],
       myInviteCode:'-------'
     }
