@@ -57,7 +57,7 @@ input[type="button"], input[type="submit"], input[type="reset"],input[type="text
 .flexbox > *{ -webkit-box-flex: 1; -moz-box-flex: 1; box-flex: 1;-webkit-flex: 1;flex: 1;}
 .hideTxt{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 
-.wrap{ min-width:320px; max-width:640px; margin:0px auto; overflow:hidden;min-height:100%; background-color:#f4f6f5; font-size:0.24rem; color:#505050}
+.wrap{ min-width:320px; max-width:640px; margin:0px auto; overflow-x:hidden;height:100%; background-color:#f4f6f5; font-size:0.24rem; color:#505050}
 .ibg{ background:url(/images/m/icons.png) no-repeat; background-size:3rem 3rem; vertical-align:middle}
 /**加载动画**/
 @-webkit-keyframes loading{

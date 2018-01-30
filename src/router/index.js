@@ -5,6 +5,7 @@ import Ranks from '@/components/pages/rank/rankHome'
 import Pkrec from '@/components/pages/mine/pkrec'
 import Invcode from '@/components/pages/mine/invcode'
 import Goodsdetail from '@/components/pages/mall/detail'
+import Ysq from '@/components/pages/ysq/index'
 
 Vue.use(Router)
 let routedatas = [
@@ -31,6 +32,12 @@ let routedatas = [
 		title:"商品详情",
 		name: 'Goodsdetail',
 		component: Goodsdetail
+	},
+	{
+		path: '/activity/ysq',
+		title:"压岁钱",
+		name: 'Ysq',
+		component: Ysq
 	},
 	{
 		path: '/*',
