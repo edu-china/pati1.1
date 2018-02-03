@@ -1,22 +1,22 @@
 <template>
   <div class="bg">
-    <div class="index">
+    <div class="index" v-if="showIndex">
       <img :src="imgs.topic1" class="topic1"/>
       <div class="form">
         <dl>
-          <dt><input type="tel" class="textinput" placeholder="输入您的手机号"/></dt>
-          <dd><input type="button" class="btn" value="领取你的压岁钱"/></dd>
+          <dt><input type="tel" class="textinput" placeholder="输入您的手机号" v-model.lazy="tel"/></dt>
+          <dd><input type="button" class="btn" value="领取你的压岁钱" @click="getYsq"/></dd>
         </dl>
       </div>
     </div>
-    <div class="res">
+    <div class="res" v-if="showRes">
       <div class="resw">
         <div style="text-align:center">
           <img :src="imgs.topic2" class="topic2"/>
         </div>
         <dl class="resbox">
           <dd class="restop">
-            <div class="jiang"><big>15</big>爬梯币</div>
+            <div class="jiang"><big>{{yasuiqian}}</big>爬梯币</div>
             <div>已放入爬梯朗读app我的宝箱中</div>
           </dd>
           <dt><img :src="imgs.spline"/></dt>
@@ -51,14 +51,54 @@ export default {
   data() {
     return {
       imgs:{topic1:topic1,topic2:topic2,bottom:bottom,spline:spline,share:share},
-      showshare:false
+      showshare:false,
+      showIndex:true,
+      showRes:false,
+      tel:'',
+      yasuiqian:'--'
     }
   },
   components:{
   },
   props:{},
   created() {},
-  methods: {}
+  methods: {
+    showSuc(num){
+        this.showIndex=false;
+        this.showRes = true;
+        this.yasuiqian = num;
+    },
+    getYsq(){
+      let vtel = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/.test(this.tel);
+      if(vtel){
+        App.showToast({
+          icon:'loading',
+          title:'正在领取'
+        });
+        this.$http.get('/weixin/yasuiqian/recv?mobile='+this.tel).then(resp=>{
+          let data = resp.data;
+          let yasuiqian = data.yasuiqian;
+          switch(data.left_share_times-0){
+            case 1:
+              this.showSuc(yasuiqian);
+            break;
+            case 2:
+              this.showSuc(yasuiqian);
+            default:
+              App.showToast({
+                icon:'warning',
+                title:'领取失败'
+              });
+          }
+        });
+      }else{
+        App.showToast({
+          icon:'warning',
+          title:this.tel?'手机号码有误':'请出入手机号'
+        })
+      }
+    }
+  }
 }
 </script>
 
@@ -75,7 +115,7 @@ export default {
   background-position: top center;
   background-repeat: no-repeat;
 }
-.index{background-image: url(../../../assets/images/ysq/bg1.png);display: none  }
+.index{background-image: url(../../../assets/images/ysq/bg1.png); }
 .res{background-image: url(../../../assets/images/ysq/bg2.png); }
 
 .topic1{

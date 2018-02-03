@@ -6,6 +6,8 @@ import Pkrec from '@/components/pages/mine/pkrec'
 import Invcode from '@/components/pages/mine/invcode'
 import Goodsdetail from '@/components/pages/mall/detail'
 import Ysq from '@/components/pages/ysq/index'
+import Invclass from '@/components/pages/inv/invclass'
+import Invpk from '@/components/pages/inv/invpk'
 
 Vue.use(Router)
 let routedatas = [
@@ -38,6 +40,18 @@ let routedatas = [
 		title:"压岁钱",
 		name: 'Ysq',
 		component: Ysq
+	},
+	{
+		path: '/inv/invclass',
+		title:"班级邀请",
+		name: 'Invclass',
+		component: Invclass
+	},
+	{
+		path: '/inv/invpk',
+		title:"PK邀请",
+		name: 'Invpk',
+		component: Invpk
 	},
 	{
 		path: '/*',
