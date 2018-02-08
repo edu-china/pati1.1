@@ -21,11 +21,14 @@
           </dd>
           <dt><img :src="imgs.spline"/></dt>
           <dd class="resbot">
-            <div style="text-align:center">
+            <div style="text-align:center" v-show="showbtns">
               <input class="ybtn" type="button" value="花压岁钱"/>
             </div>
-            <div style="text-align:center">
+            <div style="text-align:center" v-show="showbtns">
               <input class="sbtn" type="button" value="分享给朋友再领一份" @click="showshare=true"/>
+            </div>
+            <div class="over" v-show="!showbtns">
+              今日机会已用完，明日再来
             </div>
           </dd>
         </dl>
@@ -55,7 +58,8 @@ export default {
       showIndex:true,
       showRes:false,
       tel:'',
-      yasuiqian:'--'
+      yasuiqian:'--',
+      showbtns:true
     }
   },
   components:{
@@ -230,5 +234,12 @@ export default {
   position: absolute;
   right: .4rem;
   top: .17rem;
+}
+.over{
+  padding-right:1rem;
+  background: url(../../../assets/images/ysq/fail.png) right center no-repeat;
+  background-size:auto .9rem; 
+  min-height: .9rem;
+  margin:0 .4rem; 
 }
 </style>
