@@ -22,7 +22,7 @@
           <dt><img :src="imgs.spline"/></dt>
           <dd class="resbot">
             <div style="text-align:center" v-show="showbtns">
-              <input class="ybtn" type="button" value="花压岁钱"/>
+              <input class="ybtn" type="button" value="花压岁钱" v-show="iswx" @click="godown"/>
             </div>
             <div style="text-align:center" v-show="showbtns">
               <input class="sbtn" type="button" value="分享给朋友再领一份" @click="showshare=true"/>
@@ -59,14 +59,23 @@ export default {
       showRes:false,
       tel:'',
       yasuiqian:'--',
-      showbtns:true
+      showbtns:true,
+      iswx:/MicroMessenger/.test(window.navigator.userAgent),
+      token:this.$route.query.token
     }
   },
   components:{
   },
   props:{},
-  created() {},
+  created() {
+    this.$http.get('http://pati.shenzhoujiajiao.net/weixin/yasuiqian/index?token='+this.token).then(resp=>{
+      console.log('首页');
+    })
+  },
   methods: {
+    godown(){
+      location.href="http://pati.edu-china.com/weixin"
+    },
     showSuc(num){
         this.showIndex=false;
         this.showRes = true;
@@ -79,7 +88,7 @@ export default {
           icon:'loading',
           title:'正在领取'
         });
-        this.$http.get('/weixin/yasuiqian/recv?mobile='+this.tel).then(resp=>{
+        this.$http.get('/weixin/yasuiqian/recv?mobile='+this.tel+'&token='+this.token).then(resp=>{
           let data = resp.data;
           let yasuiqian = data.yasuiqian;
           switch(data.left_share_times-0){
