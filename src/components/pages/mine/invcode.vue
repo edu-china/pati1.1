@@ -45,7 +45,7 @@ export default {
   components:{bottom},
   props:{},
   created() {
-    this.$http.get('/Weixin/Member/inviteCode/userId/'+this.$route.params.uid).then(response=>{
+    this.$http.get('Member/inviteCode/userId/'+this.$route.params.uid).then(response=>{
       //response.data;
       this.myInviteCode = response.data.myInviteCode;
     });

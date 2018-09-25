@@ -6,6 +6,7 @@ import router from './router'
 import wxConfig from './assets/scripts/weixin.js'
 import Axios from 'axios'
 import qs from 'qs'
+const {baseuri} = require('./myconfig.js')
 
 Vue.prototype.wxConfig = wxConfig;
 Vue.config.productionTip = false;
@@ -13,9 +14,9 @@ window.alert = function(str){
   console.log(str);
 }
 
-const baseurl = 'http://localhost:8080/api/';
-// const baseurl = 'http://pati.shenzhoujiajiao.net/';
-// const baseurl = 'http://pati.edu-china.com/';
+// Axios.defaults.baseURL = "http://m.edu-china.com/"
+// const baseurl = 'http://m.shenzhoujiajiao.net/';
+const baseurl = 'http://'+document.location.host+baseuri;
 const timeout = 10000;
 const transrequest = [function(data){
   var isjson = typeof(data) == "object" && Object.prototype.toString.call(data).toLowerCase() == "[object object]" && !data.length;
@@ -44,37 +45,49 @@ const httpIns = Axios.create({
 });
 // httpIns.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 httpIns.interceptors.response.use(response => {
-  const data = response.data;
   if(response.status==200){
+    const data = response.data;
     window.App.hideToast();
     switch (data.status-0) {
       case 200:
-        setShare(data.data)
+        setShare(data.data);
+        return data.data;
         break;
       case 512:
-        window.App.showToast({
-          icon:'warning',
-          title:'未登录',
-          complete:()=>{
-            location.href = '/Login/index'
-          }
-        });
+        // if(/MicroMessenger/.test(window.navigator.userAgent)){
+        //   window.location.href = ""
+        // }else{
+          // window.App.showToast({
+          //   // icon:'warning',
+          //   title:'未登录',
+          //   complete:()=>{
+          //     router.push({name:'Index'})
+          //   }
+          // });
+        // }
+        return Promise.reject(data.status-0);
         break;
+      case 521:
+        location.href = data.data.auth_link;
+        return Promise.reject(data.status-0);
+      break;
       default:
         window.App.showModal({
-          title:'错误:'+data.status,
-          content:data.message,
+          title:'错误提示',
+          content:data.info,
           showCancel:false
         });
+        return Promise.reject(data.status-0);
     }
   }else{
     window.App.showModal({
-      title:'错误:'+response.status,
+      // response.status
+      title:'系统错误',
       content:response.statusText,
       showCancel:false
     });
+    return Promise.reject(response);
   }
-  return data;
 }, err => { // 这里是返回状态码不为200时候的错误处理
   console.error(err);
   window.App.showToast({
@@ -85,11 +98,14 @@ httpIns.interceptors.response.use(response => {
 });
 
 httpIns.interceptors.request.use((config)=>{
-  window.App.showToast({
-    title:'正在加载',
-    icon:'loading',
-    duration:0
-  });
+  // console.log(config)
+  if(config.showLoading!==false){
+    window.App.showToast({
+      title:'正在加载',
+      icon:'loading',
+      duration:0
+    });
+  }
   return config;
 });
 
@@ -111,6 +127,7 @@ axiosIns.interceptors.response.use(response => {
 
 Vue.prototype.$http = httpIns;
 Vue.prototype.axios = axiosIns;
+Vue.prototype.host = baseurl;
 
 /* eslint-disable no-new */
 

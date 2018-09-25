@@ -8,6 +8,7 @@ import Goodsdetail from '@/components/pages/mall/detail'
 import Ysq from '@/components/pages/ysq/index'
 import Invclass from '@/components/pages/inv/invclass'
 import Invpk from '@/components/pages/inv/invpk'
+const {assetPath} = require('../myconfig.js')
 
 Vue.use(Router)
 let routedatas = [
@@ -62,7 +63,7 @@ let routedatas = [
 ];
 
 for (let i in routedatas) {
-	routedatas[i].path = "/m"+routedatas[i].path
+	routedatas[i].path = assetPath+routedatas[i].path
 }
 const router = new Router({
 	mode: 'history',

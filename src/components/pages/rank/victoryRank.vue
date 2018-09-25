@@ -15,7 +15,7 @@
       </li>
 
     </ul>
-    <loadlist @ondataupdate="getdata" :apiurl="'/Weixin/Member/pkRank/pageSize/20/p/@p'"></loadlist>
+    <loadlist @ondataupdate="getdata" :apiurl="'Member/pkRank/pageSize/20/p/@p'"></loadlist>
   </div>
 </template>
 <script >

@@ -30,7 +30,7 @@
           <span class="pkres" :class="u.is_win-0?'win':'fail'">PK结果</span>
         </li>
       </ul>
-      <loadlist @ondataupdate="getdata" :apiurl="'/Weixin/Member/getMyPkInfo/userId/'+this.$route.params.uid+'/p/@p'"></loadlist>
+      <loadlist @ondataupdate="getdata" :apiurl="'Member/getMyPkInfo/userId/'+this.$route.params.uid+'/p/@p'"></loadlist>
     </div>
     <bottom loadtype="pk"></bottom>
   </div>

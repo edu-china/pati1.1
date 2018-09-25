@@ -30,7 +30,7 @@ export default {
   components:{bottom},
   props:{},
   created() {
-    this.axios.get("/weixin/item/detail/id/"+this.$route.params.id).then(response=>{
+    this.axios.get("item/detail/id/"+this.$route.params.id).then(response=>{
       this.item = response.data.itemInfo;
       this.complate = true;
     });

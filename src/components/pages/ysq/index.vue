@@ -68,7 +68,7 @@ export default {
   },
   props:{},
   created() {
-    this.$http.get('http://pati.shenzhoujiajiao.net/weixin/yasuiqian/index?token='+this.token).then(resp=>{
+    this.$http.get('yasuiqian/index?token='+this.token).then(resp=>{
       console.log('首页');
     })
   },
@@ -203,9 +203,9 @@ export default {
   line-height: 0;
 }
 .resbox dt img{ width: 100%;}
-.resbox dd.restop{
+/* .resbox dd.restop{
   
-}
+} */
 .resbox dd.resbot input{
   height: .76rem;
   text-align: center;
