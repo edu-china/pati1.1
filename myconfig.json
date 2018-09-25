@@ -1,0 +1,13 @@
+{
+  "prod":{
+    "index":"index.html",
+    "baseuri":"/weixin/",
+    "assetPath":"/m"
+  },
+  "dev":{
+    "index":"",
+    "baseuri":"/api/weixin/",
+    "proxyurl":"http://pati.shenzhoujiajiao.net/",
+    "assetPath":""
+  }
+}

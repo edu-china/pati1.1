@@ -6,7 +6,7 @@ import router from './router'
 import wxConfig from './assets/scripts/weixin.js'
 import Axios from 'axios'
 import qs from 'qs'
-const {baseuri} = require('./myconfig.js')
+const {baseuri} = require('../config/myconfig.js')
 
 Vue.prototype.wxConfig = wxConfig;
 Vue.config.productionTip = false;

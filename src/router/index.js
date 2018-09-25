@@ -8,7 +8,7 @@ import Goodsdetail from '@/components/pages/mall/detail'
 import Ysq from '@/components/pages/ysq/index'
 import Invclass from '@/components/pages/inv/invclass'
 import Invpk from '@/components/pages/inv/invpk'
-const {assetPath} = require('../myconfig.js')
+const {assetPath} = require('../../config/myconfig.js')
 
 Vue.use(Router)
 let routedatas = [

@@ -1,4 +1,5 @@
-require('./check-versions')()
+require('./genConfig.js')('prod');
+require('./check-versions')();
 
 process.env.NODE_ENV = 'production'
 

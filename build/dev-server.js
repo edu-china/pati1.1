@@ -1,3 +1,4 @@
+require('./genConfig.js')('dev');
 require('./check-versions')()
 
 var config = require('../config')

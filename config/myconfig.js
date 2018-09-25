@@ -1,0 +1,1 @@
+module.exports = {"index":"","baseuri":"/api/weixin/","proxyurl":"http://pati.shenzhoujiajiao.net/","assetPath":""}
