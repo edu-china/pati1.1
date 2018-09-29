@@ -2,7 +2,7 @@
   "prod":{
     "index":"index.html",
     "baseuri":"/weixin/",
-    "assetPath":"/vue/m",
+    "assetPath":"/vue/m/",
     "routeprefix":"/m"
   },
   "dev":{

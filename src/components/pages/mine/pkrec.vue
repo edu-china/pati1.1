@@ -25,7 +25,7 @@
           <ex :src="u.avator" class="img"/>
           <dl>
             <dt class="hideTxt">{{u.nick}}</dt>
-            <dd class="hideTxt">{{u.create_time}}</dd>
+            <dd class="hideTxt">{{u.text_name}}</dd>
           </dl>
           <span class="pkres" :class="u.is_win-0?'win':'fail'">PK结果</span>
         </li>

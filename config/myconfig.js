@@ -1,1 +1,1 @@
-module.exports = {"baseuri":"/api/weixin/","proxyurl":"http://pati.shenzhoujiajiao.net/","routeprefix":""}
+module.exports = {"index":"index.html","baseuri":"/weixin/","assetPath":"/vue/m/","routeprefix":"/m"}

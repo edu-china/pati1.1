@@ -8,10 +8,39 @@ import Goodsdetail from '@/components/pages/mall/detail'
 import Ysq from '@/components/pages/ysq/index'
 import Invclass from '@/components/pages/inv/invclass'
 import Invpk from '@/components/pages/inv/invpk'
+import Wxpay from '@/components/pages/wxpay/wxpay'
+
+import distribution from '@/components/pages/distribution/index'
+import payRes from '@/components/pages/distribution/res'
+import Classuser from '@/components/pages/distribution/classuser'
 const {routeprefix} = require('../../config/myconfig.js')
 
 Vue.use(Router)
 let routedatas = [
+	{
+		path: '/distribution/classuser',
+		title:"班级用户年度会员专享通道",
+		name: 'Classuser',
+		component: Classuser
+	},
+	{
+		path: '/distribution/res/:state?',
+		title:"提交成功",
+		name: 'payRes',
+		component: payRes
+	},
+	{
+		path: '/distribution/:id?/:wxuser?',
+		title:"爬梯朗读会员",
+		name: 'distribution',
+		component: distribution
+	},
+	{
+		path: '/wxpay/:chanel',
+		title:"微信支付",
+		name: 'Wxpay',
+		component: Wxpay
+	},
 	{
 		path: '/rank/:type',
 		title:"爬布斯排行榜",

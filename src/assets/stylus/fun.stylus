@@ -1,0 +1,25 @@
+lightblue()
+  color #ECF8FF
+arrow()
+  position absolute
+  display block
+  content ' '
+  width .38rem
+  height .14rem
+  background-position no-repeat
+  background-size 100% 100%
+  top 50%
+
+borderbox()
+  padding arguments
+  box-sizing border-box
+btn(w,h)
+  background linear-gradient(90deg,rgba(254,214,28,1),rgba(254,177,28,1));
+  border-radius (h/2)
+  width w
+  height h
+  line-height h
+  text-align center
+  color #fff
+  box-shadow 0 .04rem .06rem  rgba(254,179,28,0.4)
+
