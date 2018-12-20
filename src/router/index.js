@@ -11,7 +11,7 @@ import Invpk from '@/components/pages/inv/invpk'
 import Wxpay from '@/components/pages/wxpay/wxpay'
 
 import distribution from '@/components/pages/distribution/index'
-import payRes from '@/components/pages/distribution/res'
+import payRes from '@/components/pages/order/res'
 import Classuser from '@/components/pages/distribution/classuser'
 const {routeprefix} = require('../../config/myconfig.js')
 
@@ -24,8 +24,8 @@ let routedatas = [
 		component: Classuser
 	},
 	{
-		path: '/distribution/res/:state?',
-		title:"提交成功",
+		path: '/order/res',
+		title:"支付结果",
 		name: 'payRes',
 		component: payRes
 	},
@@ -36,7 +36,7 @@ let routedatas = [
 		component: distribution
 	},
 	{
-		path: '/wxpay/:chanel',
+		path: '/wxpay/',
 		title:"微信支付",
 		name: 'Wxpay',
 		component: Wxpay

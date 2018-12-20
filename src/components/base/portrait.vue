@@ -32,5 +32,5 @@ export default {
 .headportrait{font-size: 0; position:absolute;}
 .headportrait img{position: absolute; top: 0; left: 0}
 .headimg{ width: 100%; height: 100%;border-radius:50%;}
-.headframe{ width:152%; height: 152%;transform:translate(-20%,-20%); z-index: 1}
+.headframe{ width:152%; height: 152%;transform:translate(-18%,-18%); z-index: 1;max-width:none;}
 </style>

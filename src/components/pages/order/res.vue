@@ -52,8 +52,8 @@ components: {},
 
 created(){
   // this.$http.get('teacher/shareInfo');
-  let state = this.$route.params.state
-  this.$http.get('/trade/payRes?tradeNo='+state).then(data=>{
+  let tradeNo = this.$route.query.out_trade_no;
+  this.$http.get('/trade/payRes?tradeNo='+tradeNo).then(data=>{
     if(data.status==1){
       this.state = 'suc'
     }else{

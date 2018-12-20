@@ -19,9 +19,8 @@ let loadwxjs = ()=> {
 }
 
 let wxConfig = (shareinfo,wxready)=>{
-  if(!shareinfo) return;
   loadwxjs().then(wx=>{
-    // console.log(wx);
+    console.log(wx);
     wx.config({
       debug: false,
       appId:shareinfo.shareAppId,

@@ -10,9 +10,7 @@ const {baseuri} = require('../config/myconfig.js')
 
 Vue.prototype.wxConfig = wxConfig;
 Vue.config.productionTip = false;
-window.alert = function(str){
-  console.log(str);
-}
+window.alert = console.log;
 
 // Axios.defaults.baseURL = "http://m.edu-china.com/"
 // const baseurl = 'http://m.shenzhoujiajiao.net/';

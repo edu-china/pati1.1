@@ -1,7 +1,10 @@
 <template>
-    <div style="text-align:center; line-height:6rem">
-      微信支付
+  <div class="page">
+    <div style="text-align:center; line-height:2em; padding:3rem 0;">
+      <div>微信支付</div> 
+      <div><a href="javascript:history.go(-1);" style="color:#47c0ff">返回上一页</a></div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -13,7 +16,7 @@ export default {
   components: {},
 
   created(){
-    this[this.$route.params.channel](this.$route.query);
+    this[this.$route.query.channelname](this.$route.query);
   },
 
   mounted(){ },
@@ -23,38 +26,58 @@ export default {
   destroyed(){},
 
   methods: {
+    getWx(fun){
+      if(window.wx){
+        fun(window.wx);
+      }else{
+        var intv = setInterval(function(){
+          if(window.wx){
+            clearInterval(intv);
+            fun(window.wx);
+          }
+        },200);
+      }
+    },
     distribution(q){
-      let item_id = q.item_id;
-      let channelid = q.channelid;
-      this.$http.get('trade/wxpayInit?itemId='+item_id+'&channel='+channelid).then(data=>{
+      let itemId = q.itemId;
+      let channel = q.channel;
+      this.$http.get('trade/wxpayInit?itemId='+itemId+'&channel='+channel).then(data=>{
         let {timeStamp,nonceStr,paySign} = data.payInfo;
         if(data.status==1){
-          wx.chooseWXPay({
-            timestamp:timeStamp,
-            nonceStr,paySign,
-            package:data.payInfo.package,
-            signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
-            success:res=>{
-              console.log(res);
-              this.$router.replace({
-                name:'payRes',
-                params:{
-                  state:data.tradeNo
+          this.getWx(wx=>{
+            console.log(wx);
+            wx.ready(()=>{
+              wx.chooseWXPay({
+                timestamp:timeStamp,
+                nonceStr,paySign,
+                package:data.payInfo.package,
+                signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                success:res=>{
+                  console.log(res);
+                  this.$router.replace({
+                    name:'payRes',
+                    query:{
+                      out_trade_no:data.tradeNo
+                    }
+                  });
+                },
+                fail:err=>{
+                  App.showToast({
+                    icon:'warning',
+                    title:'支付失败',
+                    complete:()=>{
+                      history.go(-1);
+                    }
+                  });
+                },
+                cancel(){
+                  history.go(-1);
                 }
               });
-            },
-            fail:err=>{
-              App.showToast({
-                icon:'warning',
-                title:'支付失败',
-                complete:function(){
-                  this.$router.go(-1);
-                }
-              });
-            }
+            });
           });
         }else{
-          App.showToast({title:res.message})
+          App.showToast({icon:'none',title:data.message})
         }
       });
     }

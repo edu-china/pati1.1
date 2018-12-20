@@ -1,8 +1,14 @@
 <template>
  <div class="page">
-   <div class="imgs" v-for="i in 3" :key="i">
-     <img :src="require('../../../assets/images/distribution/'+i+'.png')" alt="">
-     <a href="javascript:;" @click="downloadApp" v-if="i==3" class="downlink">查看更多请下载爬梯朗读APP</a>
+   <div class="imgs" v-html="htmlcontent"></div>
+   <div class="foot">
+     <div>
+       <a href="javascript:;" @click="downloadApp" class="downlink">查看更多请下载爬梯朗读APP</a>
+     </div>
+     <div class="copyright">
+        客服电话：400-706-7131 <br>
+        神州佳教（北京）信息服务股份有限公司   版权所有 
+     </div>
    </div>
    <div class="login" v-show="showlogin">
      <div class="form">
@@ -22,7 +28,7 @@
    <div class="footer">
      <div class="fix">
        <img src="../../../assets/images/distribution/bot.png" alt="" class="bot">
-       <span>超值特惠 ￥{{price}}元/年</span> 
+       <span>超值特惠 ￥{{price}}元</span> 
        <a href="javascript:;" class="buy" @click="buy"><em>立即购买</em><img :src="imgs.arrow" alt=""></a>
      </div>
    </div>
@@ -53,7 +59,8 @@ export default {
       price:0,
       item_id:0,
       online:false,
-      channelid:0
+      channelid:0,
+      htmlcontent:''
     };
   },
   components: {},
@@ -68,6 +75,8 @@ export default {
         this.price = ai.price;
         this.item_id = ai.item_id;
         this.online = ai.status==1;
+        this.htmlcontent = ai.introduce;
+        document.title = ai.name;
       }else{
         App.showModal({
           title:res.message
@@ -196,14 +205,10 @@ export default {
       }
     },
     wxPay(){
-      this.$router.push({
-        name:'distribution',
-        params:{channel:'distribution'},
-        query:{
-          itemId:this.item_id,
-          channel:channelid
-        }
-      });
+      this.$http.get('trade/wxpayInit?itemId='+this.item_id+'&channel='+this.channelid).then(data=>{
+        location.href = '/m/wxpay/?channelname=distribution&itemId='+this.item_id+'&channel='+this.channelid
+      },this.notLogin);
+      
     },
     aliPay(){
       this.$http.get('trade/alipayInit?itemId='+this.item_id+'&channel='+this.channelid).then(data=>{
@@ -250,9 +255,10 @@ export default {
 
 <style lang='stylus' scoped>
 @import '../../../assets/stylus/fun.stylus'
-
+@import url('../../../assets/styles/global2.css');
 .page
-  background-color #00c4ff
+  background-color #53BCFF
+  min-height 100%
 .login
   position fixed
   top 50%
@@ -300,20 +306,10 @@ export default {
         btn(4.8rem,0.9rem)
 .imgs
   position relative
-.downlink
-  position absolute
-  bottom 15%
-  left 50%
-  white-space nowrap
-  transform translateX(-50%)
-  background-color #47C0FF
-  height .6rem
-  padding 0 .45rem
-  font-size .26rem
-  color #DBF3FF
-  border-radius .3rem
-  line-height .6rem
-  box-shadow:0 .04rem .06rem rgba(71,192,255,0.4);
+.imgs >>> img{
+  max-width 100%
+}
+
 .footer
   height 1.24rem
   .fix
@@ -387,4 +383,21 @@ export default {
     top 50%
     transform translate(-50%,-50%)
     border-radius .02rem
+.foot
+  text-align center
+  color #fff
+  padding .2rem 0
+  .downlink
+    display inline-block
+    white-space nowrap
+    background-color #FCFEFF
+    height .6rem
+    padding 0 .45rem
+    font-size .26rem
+    color #47C0FF
+    border-radius .3rem
+    line-height .6rem
+    box-shadow:0 .04rem .06rem rgba(71,192,255,0.4);
+  .copyright
+    padding .2rem 0;
 </style>
