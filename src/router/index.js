@@ -13,6 +13,9 @@ import Wxpay from '@/components/pages/wxpay/wxpay'
 import distribution from '@/components/pages/distribution/index'
 import payRes from '@/components/pages/order/res'
 import Classuser from '@/components/pages/distribution/classuser'
+
+import Enjoy from '@/components/pages/enjoy/enjoy'
+
 const {routeprefix} = require('../../config/myconfig.js')
 
 Vue.use(Router)
@@ -82,6 +85,12 @@ let routedatas = [
 		title:"PK邀请",
 		name: 'Invpk',
 		component: Invpk
+	},
+	{
+		path:'/wxpay/enjoy/:readId?/:wxuser?',
+		title:'打赏',
+		name:'Enjoy',
+		component:Enjoy
 	},
 	{
 		path: '/*',

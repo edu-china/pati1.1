@@ -49,7 +49,8 @@ export default {
             wx.ready(()=>{
               wx.chooseWXPay({
                 timestamp:timeStamp,
-                nonceStr,paySign,
+                nonceStr,
+                paySign,
                 package:data.payInfo.package,
                 signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
                 success:res=>{
@@ -62,6 +63,7 @@ export default {
                   });
                 },
                 fail:err=>{
+                  console.log(err)
                   App.showToast({
                     icon:'warning',
                     title:'支付失败',

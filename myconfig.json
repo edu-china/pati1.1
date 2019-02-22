@@ -7,7 +7,7 @@
   },
   "dev":{
     "baseuri":"/api/weixin/",
-    "proxyurl":"http://pati.edu-china.com/",
+    "proxyurl":"http://pati.shenzhoujiajiao.net/",
     "routeprefix":""
   }
 }
